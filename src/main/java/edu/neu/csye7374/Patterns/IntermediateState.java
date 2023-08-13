@@ -1,5 +1,7 @@
 package edu.neu.csye7374.Patterns;
 
+import edu.neu.csye7374.APIs.PlayerStateAPI;
+
 public class IntermediateState implements PlayerStateAPI{
 
     public void EntryStateOn() {
@@ -12,17 +14,17 @@ public class IntermediateState implements PlayerStateAPI{
         System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Beginner State from Intermediate State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     }
 
-    public void IntermediateStateOn {
+    public void IntermediateStateOn() {
         System.out.println("Continuing with the Intermediate Room ***************************");
         System.out.println("All the best in trying to escape the rooms ***************************");
     }
 
-    public void AdvancedStateOn {
+    public void AdvancedStateOn() {
         System.out.println("Continuing with the Advanced Room ***************************");
         System.out.println("All the best in trying to escape the rooms ***************************");
     }
 
-    public void ExitStateOn {
+    public void ExitStateOn() {
 //        Not allowable operations from this state i.e IntermediateState -> ExitState
         System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Exit State without successfully passing the Advanced State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     }
