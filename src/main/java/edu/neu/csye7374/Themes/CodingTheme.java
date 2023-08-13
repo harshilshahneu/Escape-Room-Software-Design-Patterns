@@ -5,10 +5,10 @@ import java.util.List;
 import edu.neu.csye7374.Models.Room;
 import edu.neu.csye7374.Models.Themes;
 
-public class JailTheme extends Themes{
+public class CodingTheme extends Themes{
     
-    public JailTheme() {
-        super("Jail");
+    public CodingTheme() {
+        super("Coding!");
     }
 
     @Override
