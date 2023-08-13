@@ -10,21 +10,51 @@ import java.util.List;
  * Abstract class to represent a room
  */
 
- public abstract class Room {
-    int id;
-    String name; // name of the room
-    String description; // description of the room
-    List<Puzzle> puzzles; // puzzles in the room
-    Puzzle exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
-    Room nextRoom; // ids of the next rooms // null if no next room
+ /**
+  * Code Implementattion Reference: https://dev.to/karthikrg/implementing-builder-pattern-abstract-class-3c1l
+  */
 
-    public Room(int id, String name, String description, List<Puzzle> puzzles, Room nextRoom, Puzzle exitPuzzle) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.puzzles = puzzles;
-        this.nextRoom = nextRoom;
-        this.exitPuzzle = exitPuzzle;
+ public abstract class Room {
+    private int id;
+    private String name; // name of the room
+    private String description; // description of the room
+    private List<Puzzle> puzzles; // puzzles in the room
+    private Puzzle exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
+    private Room nextRoom; // ids of the next rooms // null if no next room
+
+    public Room(RoomBuilder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.puzzles = builder.puzzles;
+        this.exitPuzzle = builder.exitPuzzle;
+        this.nextRoom = builder.nextRoom;
+    }
+    /**
+     * Getters
+     */
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() { 
+        return description;
+    }
+
+    public List<Puzzle> getPuzzles() {
+        return puzzles;
+    }
+
+    public Puzzle getExitPuzzle() {
+        return exitPuzzle;
+    }
+
+    public Room getNextRoom() {
+        return nextRoom;
     }
 
     abstract public void enterRoom();
@@ -72,7 +102,7 @@ import java.util.List;
             return this;
         }
 
-        abstract public Room build();
+        public abstract Room build();
     }
    
 
