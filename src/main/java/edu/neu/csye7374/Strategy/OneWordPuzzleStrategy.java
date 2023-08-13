@@ -15,4 +15,9 @@ public class OneWordPuzzleStrategy implements PuzzleStrategy {
     public boolean solve(String answer) {
         return answer.equals(this.answer);
     }
+
+    @Override
+    public void display() {
+        System.out.println(this.question);
+    }
 }

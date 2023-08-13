@@ -20,5 +20,16 @@ public class MCQPuzzleStrategy implements PuzzleStrategy {
         int option = Integer.parseInt(answer);
         return option == correctOption;
     }
+
+
+    @Override
+    public void display() {
+        System.out.println(this.question);
+        int index=0;
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println((i + 1) + ". " + options.get(i));
+        }
+
     }
+}
 
