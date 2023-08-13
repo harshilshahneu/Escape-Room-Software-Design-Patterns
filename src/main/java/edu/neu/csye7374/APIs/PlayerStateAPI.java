@@ -1,4 +1,4 @@
-package edu.neu.csye7374.Patterns;
+package edu.neu.csye7374.APIs;
 
 /**
  * In this game there will be 3 rooms
