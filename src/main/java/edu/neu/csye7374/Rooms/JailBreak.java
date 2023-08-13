@@ -47,8 +47,7 @@ public class JailBreak extends Room {
                 .setDescription("You are in a jail cell. You need to escape the jail cell to enter the next room.");
                 // .setPuzzles(null)
                 // .setExitPuzzle(null)
-                // .setNextRoom(null);
-
+                
             return new JailBreak(this);
         }
 
