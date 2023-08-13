@@ -1,5 +1,7 @@
 package edu.neu.csye7374.Patterns;
 
+import edu.neu.csye7374.APIs.PlayerStateAPI;
+
 public class IntermediateState implements PlayerStateAPI{
 
     public void EntryStateOn() {
