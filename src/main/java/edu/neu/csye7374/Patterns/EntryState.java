@@ -13,17 +13,17 @@ public class EntryState implements PlayerStateAPI {
             System.out.println("All the best in trying to escape the rooms ***************************");
         }
 
-        public void IntermediateStateOn {
+        public void IntermediateStateOn() {
 //        Not allowable operations from this state i.e EntryState -> IntermediateState
             System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Intermediate State without successfully passing the Beginner State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         }
 
-        public void AdvancedStateOn {
+        public void AdvancedStateOn() {
 //        Not allowable operations from this state i.e EntryState -> AdvancedState
             System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Advanced State without successfully passing the Beginner State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         }
 
-        public void ExitStateOn {
+        public void ExitStateOn() {
 //        Not allowable operations from this state i.e EntryState -> ExitState
             System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Exit State without successfully passing the Advanced State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         }
