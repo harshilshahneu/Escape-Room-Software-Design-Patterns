@@ -1,7 +1,6 @@
 package edu.neu.csye7374.Rooms.Factories;
 
 import edu.neu.csye7374.Models.Room;
-import edu.neu.csye7374.Models.RoomFactory;
 import edu.neu.csye7374.Rooms.JailBreak;
 
 /**
