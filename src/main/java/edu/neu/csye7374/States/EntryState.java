@@ -1,4 +1,4 @@
-package edu.neu.csye7374.Patterns;
+package edu.neu.csye7374.States;
 
 import edu.neu.csye7374.APIs.PlayerStateAPI;
 
