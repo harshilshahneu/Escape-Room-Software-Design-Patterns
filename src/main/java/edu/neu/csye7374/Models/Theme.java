@@ -4,6 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import edu.neu.csye7374.APIs.PlayerStateAPI;
+import edu.neu.csye7374.TimerObserver.GameEndObserverTimer;
+import edu.neu.csye7374.TimerObserver.GameObservableTimer;
+import edu.neu.csye7374.TimerObserver.GameStartObserverTimer;
+import edu.neu.csye7374.TimerObserver.ObservableTimerAPI;
+import edu.neu.csye7374.TimerObserver.ObserverTimerAPI;
 
 public abstract class Theme {
     private String themeName;
@@ -46,6 +51,15 @@ public abstract class Theme {
     public void exitTheme() {
         System.out.println("Exiting " + themeName + " theme");
     }
+    
+    public static void startUserClock() {
+        ObservableTimerAPI gameTimer = new GameObservableTimer();
+        ObserverTimerAPI startGameObserver= new GameStartObserverTimer();
+        ObserverTimerAPI endGameObserver= new GameEndObserverTimer();
+        gameTimer.addObserver(startGameObserver);
+        gameTimer.addObserver(endGameObserver);
+        gameTimer.startTimer(600);//10 minutes
+     }
     //start the game
     public void start() {
         //push two states onto the stack
@@ -55,6 +69,8 @@ public abstract class Theme {
         queue.add(user.getAdvancedState());
         queue.add(user.getExitState());
 
+        //start the clock
+        startUserClock();
         while (rooms.size() > 0) {
             user.setState(queue.remove());
             //display the state
