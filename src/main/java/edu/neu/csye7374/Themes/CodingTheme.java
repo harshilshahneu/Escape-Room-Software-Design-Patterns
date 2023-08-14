@@ -5,14 +5,14 @@ import java.util.List;
 
 import edu.neu.csye7374.Models.Room;
 import edu.neu.csye7374.Models.Theme;
-import edu.neu.csye7374.Models.UserProfile;
+import edu.neu.csye7374.Models.User;
 import edu.neu.csye7374.Rooms.HauntedMansion;
 import edu.neu.csye7374.Rooms.JailBreak;
 import edu.neu.csye7374.Rooms.UnderwaterAdventure;
 
 public class CodingTheme extends Theme{
     
-    public CodingTheme(UserProfile user) {
+    public CodingTheme(User user) {
         super(user);
     }
 

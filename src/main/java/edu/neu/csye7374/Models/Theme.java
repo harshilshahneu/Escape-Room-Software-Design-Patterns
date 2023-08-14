@@ -1,18 +1,21 @@
 package edu.neu.csye7374.Models;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import edu.neu.csye7374.APIs.PlayerStateAPI;
 
 public abstract class Theme {
     private String themeName;
     protected List<String> instructions;
     private List<Room> rooms; //the rooms are in order, so we can use this to load the rooms in order
-    private UserProfile user; //the user who is playing the game
+    private User user; //the user who is playing the game
 
-    public Theme(UserProfile user) {
+    public Theme(User user) {
         this.user = user;
     }
 
-    public UserProfile getUserProfile() {
+    public User getUser() {
         return user;
     }
 
@@ -27,7 +30,6 @@ public abstract class Theme {
     public void setThemeName(String themeName) {
         this.themeName = themeName;
     }
-    
     public abstract void createTheme();
 
     public abstract void loadRooms();
@@ -46,11 +48,22 @@ public abstract class Theme {
     }
     //start the game
     public void start() {
-        //remove the first room from the list
+        //push two states onto the stack
+        Queue<PlayerStateAPI> queue = new LinkedList<>();
+        queue.add(user.getBeginnerState());
+        queue.add(user.getIntermediateState());
+        queue.add(user.getAdvancedState());
+        queue.add(user.getExitState());
+
         while (rooms.size() > 0) {
+            user.setState(queue.remove());
+            //display the state
+            user.displayState();
             Room room = rooms.remove(0);
-            room.enterRoom(getUserProfile());
+            room.enterRoom(user.getUserProfile());
         }
+        user.setState(queue.remove());
+        user.displayState();
     }
     
     //template method

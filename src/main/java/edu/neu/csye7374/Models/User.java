@@ -10,7 +10,7 @@ import edu.neu.csye7374.States.IntermediateState;
 //Store the user details
 //maintain the states of the user
 public class User implements PlayerStateAPI{
-    UserProfile user;
+    UserProfile userProfile;
     private PlayerStateAPI entryState;
     private PlayerStateAPI beginnerState;
     private PlayerStateAPI intermediateState;
@@ -18,14 +18,18 @@ public class User implements PlayerStateAPI{
     private PlayerStateAPI exitState;
     private PlayerStateAPI state;
 
-    public User(UserProfile user) {
-        this.user = user;
+    public User(UserProfile userProfile) {
+        this.userProfile = userProfile;
         this.entryState = new EntryState(this);
         this.beginnerState = new BeginnerState(this);
         this.intermediateState = new IntermediateState(this);
         this.advancedState = new AdvancedState(this);
         this.exitState = new ExitState(this);
-        this.state = entryState; //initial state
+        this.state = new EntryState(this); //initial state
+    }
+
+    public UserProfile getUserProfile() {
+       return this.userProfile;
     }
 
     //getter for all the state

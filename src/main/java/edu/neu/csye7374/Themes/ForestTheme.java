@@ -4,11 +4,11 @@ import java.util.List;
 
 import edu.neu.csye7374.Models.Room;
 import edu.neu.csye7374.Models.Theme;
-import edu.neu.csye7374.Models.UserProfile;
+import edu.neu.csye7374.Models.User;
 
 public class ForestTheme extends Theme {
     
-    public ForestTheme(UserProfile user) {
+    public ForestTheme(User user) {
         super(user);
     }
 
