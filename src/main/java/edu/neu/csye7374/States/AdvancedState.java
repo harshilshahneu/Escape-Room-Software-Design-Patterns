@@ -27,19 +27,20 @@ public class AdvancedState implements PlayerStateAPI {
     }
 
     public void AdvancedStateOn() {
-        System.out.println("Continuing with the Advanced Room ***************************");
-        System.out.println("Allowed operations are: Advanced State to Exit State***************************");
-        System.out.println("All the best in trying to escape the rooms ***************************");
+        System.out.println("Already in the Advanced State ***************************");
     }
 
     public void ExitStateOn() {
-        System.out.println("Continuing with the ExitState ***************************");
+        user.setState(user.getExitState());
+        System.out.println("Ending with the ExitState ***************************");
         System.out.println("Hope you had fun playing the escape game ***************************");
     }
 
     public void displayState() {
         System.out.println("****************************** Current State is the Advanced State ***************************");
         System.out.println("This is an last state of the user in the Escape room game. The user enters the final room in this state ***************************");
+        System.out.println("Allowed operations are: Advanced State to Exit State***************************");
+
     }
 
 }

@@ -32,8 +32,7 @@ public class ExitState implements PlayerStateAPI {
     }
 
     public void ExitStateOn() {
-        System.out.println("Continuing with the ExitState ***************************");
-        System.out.println("Hope you had fun playing the escape game ***************************");
+        System.out.println("Already in the Advanced State ***************************");
     }
 
     public void displayState() {

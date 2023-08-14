@@ -17,14 +17,12 @@ public class BeginnerState implements PlayerStateAPI {
     }
 
     public void BeginnerStateOn() {
-        System.out.println("Statring with the Beginner Room ***************************");
-        System.out.println("Allowed operations are: Beginner state to Intermediate state ***************************");
-        System.out.println("All the best in trying to escape the rooms ***************************");
+        System.out.println("Already in the Beginner State ***************************");
     }
 
     public void IntermediateStateOn() {
-        System.out.println("Continuing with the Intermediate Room ***************************");
-        System.out.println("All the best in trying to escape the rooms ***************************");
+        System.out.println("Moving to the Intermediate State ***************************");
+        user.setState(user.getIntermediateState());
     }
 
     public void AdvancedStateOn() {
@@ -40,6 +38,8 @@ public class BeginnerState implements PlayerStateAPI {
     public void displayState() {
         System.out.println("****************************** Current State is the Beginner State ***************************");
         System.out.println("This is an beginning state of the user in the Escape room game. The user enters the first room in this state ***************************");
+        System.out.println("Allowed operations are: Beginner state to Intermediate state ***************************");
+
     }
 
 }

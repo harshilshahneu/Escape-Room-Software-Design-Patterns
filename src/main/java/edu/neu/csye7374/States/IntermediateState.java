@@ -22,14 +22,12 @@ public class IntermediateState implements PlayerStateAPI{
     }
 
     public void IntermediateStateOn() {
-        System.out.println("Continuing with the Intermediate Room ***************************");
-        System.out.println("Allowed operations are: Intermediate state to Advanced State***************************");
-        System.out.println("All the best in trying to escape the rooms ***************************");
+        System.out.println("Already in the Intermediate State ***************************");
     }
 
     public void AdvancedStateOn() {
-        System.out.println("Continuing with the Advanced Room ***************************");
-        System.out.println("All the best in trying to escape the rooms ***************************");
+        user.setState(user.getAdvancedState());
+        System.out.println("Moving with the Advanced Room ***************************");
     }
 
     public void ExitStateOn() {
@@ -40,6 +38,7 @@ public class IntermediateState implements PlayerStateAPI{
     public void displayState() {
         System.out.println("****************************** Current State is the Intermediate State ***************************");
         System.out.println("This is an second state of the user in the Escape room game. The user enters the second room in this state ***************************");
+        System.out.println("Allowed operations are: Intermediate state to Advanced State***************************");
     }
 
 }
