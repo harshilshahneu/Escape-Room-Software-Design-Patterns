@@ -1,8 +1,6 @@
 package edu.neu.csye7374.Strategy;
 
 import edu.neu.csye7374.APIs.PuzzleStrategy;
-import edu.neu.csye7374.Models.Puzzle;
-import edu.neu.csye7374.Models.Room;
 
 public class OneWordPuzzleStrategy implements PuzzleStrategy {
     String question;
@@ -18,6 +16,6 @@ public class OneWordPuzzleStrategy implements PuzzleStrategy {
 
     @Override
     public void display() {
-        System.out.println(this.question);
+        System.out.println("Question: " + this.question + " ?");
     }
 }

@@ -1,7 +1,6 @@
 package edu.neu.csye7374.Strategy;
 
 import edu.neu.csye7374.APIs.PuzzleStrategy;
-import edu.neu.csye7374.Models.Puzzle;
 
 import java.util.List;
 
@@ -17,14 +16,19 @@ public class MCQPuzzleStrategy implements PuzzleStrategy {
     }
     @Override
     public boolean solve(String answer) {
-        int option = Integer.parseInt(answer);
-        return option == correctOption;
+        try {
+            int option = Integer.parseInt(answer);
+            return option == correctOption;
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Please enter a valid option number!");
+            return false;
+        }
     }
-
 
     @Override
     public void display() {
-        System.out.println(this.question);
+        System.out.println("Question: " + this.question);
         int index=0;
         for (int i = 0; i < options.size(); i++) {
             System.out.println((i + 1) + ". " + options.get(i));

@@ -1,5 +1,7 @@
 package edu.neu.csye7374.Models;
 
+import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
+
 import java.util.List;
 
 /**
@@ -18,8 +20,8 @@ import java.util.List;
     private int id;
     private String name; // name of the room
     private String description; // description of the room
-    private List<Puzzle> puzzles; // puzzles in the room
-    private Puzzle exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
+    private List<PuzzleContextStrategy> puzzles; // puzzles in the room
+    private PuzzleContextStrategy exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
 
     public Room(RoomBuilder builder) {
         this.id = builder.id;
@@ -43,11 +45,11 @@ import java.util.List;
         return description;
     }
 
-    public List<Puzzle> getPuzzles() {
+    public List<PuzzleContextStrategy> getPuzzles() {
         return puzzles;
     }
 
-    public Puzzle getExitPuzzle() {
+    public PuzzleContextStrategy getExitPuzzle() {
         return exitPuzzle;
     }
 
@@ -62,8 +64,8 @@ import java.util.List;
         int id;
         String name;
         String description;
-        List<Puzzle> puzzles;
-        Puzzle exitPuzzle = null; //default value
+        List<PuzzleContextStrategy> puzzles;
+        PuzzleContextStrategy exitPuzzle = null; //default value
 
         public RoomBuilder setId(int id) {
             this.id = id;
@@ -80,12 +82,12 @@ import java.util.List;
             return this;
         }
 
-        public RoomBuilder setPuzzles(List<Puzzle> puzzles) {
+        public RoomBuilder setPuzzles(List<PuzzleContextStrategy> puzzles) {
             this.puzzles = puzzles;
             return this;
         }
 
-        public RoomBuilder setExitPuzzle(Puzzle puzzle) {
+        public RoomBuilder setExitPuzzle(PuzzleContextStrategy puzzle) {
             this.exitPuzzle = puzzle;
             return this;
         }
