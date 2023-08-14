@@ -1,8 +1,15 @@
 package edu.neu.csye7374.States;
 
 import edu.neu.csye7374.APIs.PlayerStateAPI;
+import edu.neu.csye7374.Models.User;
 
 public class AdvancedState implements PlayerStateAPI {
+
+    private final User user;
+
+    public AdvancedState(User user) {
+        this.user = user;
+    }
 
     public void EntryStateOn() {
 //        Not allowable operations from this state i.e AdvancedState -> EntryState
@@ -21,12 +28,18 @@ public class AdvancedState implements PlayerStateAPI {
 
     public void AdvancedStateOn() {
         System.out.println("Continuing with the Advanced Room ***************************");
+        System.out.println("Allowed operations are: Advanced State to Exit State***************************");
         System.out.println("All the best in trying to escape the rooms ***************************");
     }
 
     public void ExitStateOn() {
         System.out.println("Continuing with the ExitState ***************************");
         System.out.println("Hope you had fun playing the escape game ***************************");
+    }
+
+    public void displayState() {
+        System.out.println("****************************** Current State is the Advanced State ***************************");
+        System.out.println("This is an last state of the user in the Escape room game. The user enters the final room in this state ***************************");
     }
 
 }

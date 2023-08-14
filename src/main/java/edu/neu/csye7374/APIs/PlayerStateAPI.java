@@ -15,4 +15,6 @@ public interface PlayerStateAPI {
     void IntermediateStateOn();
     void AdvancedStateOn();
     void ExitStateOn();
+
+    void displayState();
 }

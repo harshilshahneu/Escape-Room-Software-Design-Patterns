@@ -1,8 +1,15 @@
 package edu.neu.csye7374.States;
 
 import edu.neu.csye7374.APIs.PlayerStateAPI;
+import edu.neu.csye7374.Models.User;
 
 public class BeginnerState implements PlayerStateAPI {
+
+    private final User user;
+
+    public BeginnerState(User user) {
+        this.user = user;
+    }
 
     public void EntryStateOn() {
 //        Not allowable operations from this state i.e BeginnerState -> EntryState
@@ -11,6 +18,7 @@ public class BeginnerState implements PlayerStateAPI {
 
     public void BeginnerStateOn() {
         System.out.println("Statring with the Beginner Room ***************************");
+        System.out.println("Allowed operations are: Beginner state to Intermediate state ***************************");
         System.out.println("All the best in trying to escape the rooms ***************************");
     }
 
@@ -27,6 +35,11 @@ public class BeginnerState implements PlayerStateAPI {
     public void ExitStateOn() {
 //        Not allowable operations from this state i.e BeginnerState -> ExitState
         System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Exit State without successfully passing the Advanced State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    }
+
+    public void displayState() {
+        System.out.println("****************************** Current State is the Beginner State ***************************");
+        System.out.println("This is an beginning state of the user in the Escape room game. The user enters the first room in this state ***************************");
     }
 
 }
