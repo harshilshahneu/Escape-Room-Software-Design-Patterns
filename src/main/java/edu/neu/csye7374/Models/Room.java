@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.neu.csye7374.Strategy.Puzzle;
+import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
 /**
  * In a game there will be multiple rooms
@@ -22,8 +22,8 @@ import edu.neu.csye7374.Strategy.Puzzle;
     private int id;
     private String name; // name of the room
     private String description; // description of the room
-    private List<Puzzle> puzzles; // puzzles in the room
-    private Puzzle exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
+    private List<PuzzleContextStrategy> puzzles; // puzzles in the room
+    private PuzzleContextStrategy exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
 
     public Room(RoomBuilder builder) {
         this.id = builder.id;
@@ -47,20 +47,20 @@ import edu.neu.csye7374.Strategy.Puzzle;
         return description;
     }
 
-    public List<Puzzle> getPuzzles() {
+    public List<PuzzleContextStrategy> getPuzzles() {
         return puzzles;
     }
 
-    public Puzzle getExitPuzzle() {
+    public PuzzleContextStrategy getExitPuzzle() {
         return exitPuzzle;
     }
 
-    public Puzzle removePuzzle(int index) {
+    public PuzzleContextStrategy removePuzzle(int index) {
         return puzzles.remove(index);
     }
 
-    public void displayPuzzles(Map <Integer, Puzzle> puzzlesMap) {
-        for (Map.Entry<Integer, Puzzle> entry : puzzlesMap.entrySet()) {
+    public void displayPuzzles(Map <Integer, PuzzleContextStrategy> puzzlesMap) {
+        for (Map.Entry<Integer, PuzzleContextStrategy> entry : puzzlesMap.entrySet()) {
             System.out.print("Puzzle " + entry.getKey() + ". ");
             entry.getValue().display();
             System.out.println();
@@ -93,7 +93,7 @@ import edu.neu.csye7374.Strategy.Puzzle;
     }
 
     public void playRoom() {
-        Map<Integer, Puzzle> puzzlesMap = createPuzzlesMap();
+        Map<Integer, PuzzleContextStrategy> puzzlesMap = createPuzzlesMap();
     
         while (!puzzlesMap.isEmpty()) {
             System.out.println("===========================================");
@@ -112,8 +112,8 @@ import edu.neu.csye7374.Strategy.Puzzle;
         exitRoom();
     }
     
-    private Map<Integer, Puzzle> createPuzzlesMap() {
-        Map<Integer, Puzzle> puzzlesMap = new HashMap<>();
+    private Map<Integer, PuzzleContextStrategy> createPuzzlesMap() {
+        Map<Integer, PuzzleContextStrategy> puzzlesMap = new HashMap<>();
         for (int i = 0; i < puzzles.size(); i++) {
             puzzlesMap.put(i + 1, puzzles.get(i));
         }
@@ -131,11 +131,11 @@ import edu.neu.csye7374.Strategy.Puzzle;
         return puzzleNumber;
     }
     
-    private void solvePuzzle(int puzzleNumber, Map<Integer, Puzzle> puzzlesMap) {
+    private void solvePuzzle(int puzzleNumber, Map<Integer, PuzzleContextStrategy> puzzlesMap) {
         System.out.println("Enter your answer for puzzle number " + puzzleNumber + ": ");
         String answer = System.console().readLine();
     
-        Puzzle puzzle = puzzlesMap.get(puzzleNumber);
+        PuzzleContextStrategy puzzle = puzzlesMap.get(puzzleNumber);
         if (puzzle.solve(answer)) {
             System.out.println("Correct answer!");
             System.out.println("===========================================");
@@ -160,8 +160,8 @@ import edu.neu.csye7374.Strategy.Puzzle;
         int id;
         String name;
         String description;
-        List<Puzzle> puzzles;
-        Puzzle exitPuzzle = null; //default value
+        List<PuzzleContextStrategy> puzzles;
+        PuzzleContextStrategy exitPuzzle = null; //default value
 
         public RoomBuilder setId(int id) {
             this.id = id;
@@ -178,12 +178,12 @@ import edu.neu.csye7374.Strategy.Puzzle;
             return this;
         }
 
-        public RoomBuilder setPuzzles(List<Puzzle> puzzles) {
+        public RoomBuilder setPuzzles(List<PuzzleContextStrategy> puzzles) {
             this.puzzles = puzzles;
             return this;
         }
 
-        public RoomBuilder setExitPuzzle(Puzzle puzzle) {
+        public RoomBuilder setExitPuzzle(PuzzleContextStrategy puzzle) {
             this.exitPuzzle = puzzle;
             return this;
         }

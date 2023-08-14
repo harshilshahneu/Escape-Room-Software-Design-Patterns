@@ -8,7 +8,7 @@ import edu.neu.csye7374.APIs.PuzzleStrategy;
 import edu.neu.csye7374.Models.Room;
 import edu.neu.csye7374.Strategy.MCQPuzzleStrategy;
 import edu.neu.csye7374.Strategy.OneWordPuzzleStrategy;
-import edu.neu.csye7374.Strategy.Puzzle;
+import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
 /**
  * jailbreak room
@@ -35,11 +35,11 @@ public class JailBreak extends Room {
             PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("System.out.println(World)", List.of("Hello", "World", "Hi", "Hey"), 2);
             PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("System.out.println(first + ' ' +second)", "Hello World");
 
-            Puzzle firstPuzzle = new Puzzle(firstQuestion);
-            Puzzle secondPuzzle = new Puzzle(secondQuestion);
-            Puzzle finalPuzzle = new Puzzle(finalQuestion);
+            PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
+            PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);
+            PuzzleContextStrategy finalPuzzle = new PuzzleContextStrategy(finalQuestion);
 
-            List<Puzzle> puzzleList = new ArrayList<>();
+            List<PuzzleContextStrategy> puzzleList = new ArrayList<>();
             puzzleList.add(firstPuzzle);
             puzzleList.add(secondPuzzle);
             puzzleList.add(finalPuzzle);
