@@ -57,6 +57,6 @@ public class JailBreak extends Room {
 
     @Override
     public void exitRoom() {
-        System.out.println();
+        System.out.println("You have escaped the jail cell.");
     }
 }
