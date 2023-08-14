@@ -14,15 +14,13 @@ public class EntryState implements PlayerStateAPI {
         }
 
         public void EntryStateOn() {
-            System.out.println("------------------------------------Wecome to the Escape Room-------------------------------------");
-            System.out.println("Start by adding your credentials: ***************************");
-            System.out.println("Allowed operations are: Entry state to Beginner state ***************************");
+            System.out.println("Already in the Entry State ***************************");
         }
 
         public void BeginnerStateOn() {
 //        Allowed operations from Entry state to Beginner state
-            System.out.println("Statring with the Beginner Room ***************************");
-            System.out.println("All the best in trying to escape the rooms ***************************");
+           System.out.println("Moving to the Beginner State ***************************");
+           user.setState(user.getBeginnerState());
         }
 
         public void IntermediateStateOn() {
@@ -36,8 +34,8 @@ public class EntryState implements PlayerStateAPI {
         }
 
         public void ExitStateOn() {
-//        Not allowable operations from this state i.e EntryState -> ExitState
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ERROR: Can't escape to the Exit State without successfully passing the Advanced State XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            System.out.println("Changing to the Exit State ***************************");
+            user.setState(user.getExitState());
         }
 
         public void displayState() {
