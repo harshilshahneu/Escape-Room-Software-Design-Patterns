@@ -1,6 +1,14 @@
 package edu.neu.csye7374.Rooms;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.neu.csye7374.APIs.PuzzleStrategy;
+
 import edu.neu.csye7374.Models.Room;
+import edu.neu.csye7374.Strategy.MCQPuzzleStrategy;
+import edu.neu.csye7374.Strategy.OneWordPuzzleStrategy;
+import edu.neu.csye7374.Strategy.Puzzle;
 
 /**
  * jailbreak room
@@ -16,40 +24,39 @@ public class JailBreak extends Room {
         super(builder);
     }
 
-    @Override
-    public void enterRoom() {
-        System.out.println("Welcome to " + this.getName() + "!");
-        System.out.println(this.getDescription());
-
-        //Display the instructions here
-
-        //Start the timer once the user confirms the instructions
-        //Call playRoom() method
-    }
-
-    @Override
-    public void exitRoom() {
-       System.out.println("You have successfully escaped the " + this.getName() + "!");
-       //Move to the next room / Change the state of the game
-    }
-
-    @Override
-    public void playRoom() {
-        //Display the puzzles here and ask the user to solve them
-    }
-    
     public static class JailBreakBuilder extends Room.RoomBuilder {
 
         @Override
         public Room build() {
+            /**
+             * Set the puzzles and exit puzzle here
+             */
+            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("System.out.println(Hello)", List.of("Hello", "World", "Hi", "Hey"), 1);
+            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("System.out.println(World)", List.of("Hello", "World", "Hi", "Hey"), 2);
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("System.out.println(first + ' ' +second)", "Hello World");
+
+            Puzzle firstPuzzle = new Puzzle(firstQuestion);
+            Puzzle secondPuzzle = new Puzzle(secondQuestion);
+            Puzzle finalPuzzle = new Puzzle(finalQuestion);
+
+            List<Puzzle> puzzleList = new ArrayList<>();
+            puzzleList.add(firstPuzzle);
+            puzzleList.add(secondPuzzle);
+            puzzleList.add(finalPuzzle);
+
             this.setId(1)
                 .setName("JailBreak")
-                .setDescription("You are in a jail cell. You need to escape the jail cell to enter the next room.");
-                // .setPuzzles(null)
-                // .setExitPuzzle(null)
-                
+                .setDescription("You are in a jail cell. You need to escape the jail cell to enter the next room.")
+                .setPuzzles(puzzleList)
+                .setExitPuzzle(finalPuzzle);
+
             return new JailBreak(this);
         }
 
+    }
+
+    @Override
+    public void exitRoom() {
+        System.out.println();
     }
 }
