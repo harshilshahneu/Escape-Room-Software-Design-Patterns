@@ -27,6 +27,7 @@ public class GameObservableTimer implements  ObservableTimerAPI{
         public void run() {
             notifyObserversOnTimerEnd();
             timer.cancel();
+            System.exit(0);
         }
     },durationInSeconds * 1000);
 

@@ -58,7 +58,7 @@ public abstract class Theme {
         ObserverTimerAPI endGameObserver= new GameEndObserverTimer();
         gameTimer.addObserver(startGameObserver);
         gameTimer.addObserver(endGameObserver);
-        gameTimer.startTimer(6000);//10 minutes
+        gameTimer.startTimer(60);//10 minutes
      }
     //start the game
     public void start() {
