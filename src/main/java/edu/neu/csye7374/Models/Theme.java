@@ -50,6 +50,7 @@ public abstract class Theme {
 
     public void exitTheme() {
         System.out.println("Exiting " + themeName + " theme");
+        System.exit(0);
     }
     
     public static void startUserClock() {
