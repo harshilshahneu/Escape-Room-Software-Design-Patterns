@@ -27,9 +27,9 @@ public class UnderwaterAdventure extends Room {
             /**
              * Set the puzzles and exit puzzle here
              */
-            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the largest mammal in the ocean?", List.of("Dolphin", "Whale", "Shark", "Seal"), 2);
-            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What is a group of fish called?", List.of("Flock", "Herd", "School", "Pack"), 3);
-            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Fish out of ...'", "Water");
+            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the largest mammal in the ocean?", List.of("Dolphin", "Whale", "Shark", "Seal"), 2, "");
+            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What is a group of fish called?", List.of("Flock", "Herd", "School", "Pack"), 3, "");
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Fish out of ...'", "Water", "");
 
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);

@@ -33,7 +33,7 @@ public class JailBreak extends Room {
              */
             PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("System.out.println(Hello)", List.of("Hello", "World", "Hi", "Hey"), 1,"");
             PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("System.out.println(World)", List.of("Hello", "World", "Hi", "Hey"), 2,"");
-            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("System.out.println(first + ' ' +second)", "Hello World");
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("System.out.println(first + ' ' +second)", "Hello World", "");
 
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);

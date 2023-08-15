@@ -27,9 +27,9 @@ public class HauntedMansion extends Room {
             /**
              * Set the puzzles and exit puzzle here
              */
-            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the ghost's favorite food?", List.of("Pizza", "Brains", "Spaghetti", "Salad"), 1);
-            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What instrument does a skeleton play?", List.of("Guitar", "Flute", "Xylophone", "Trombone"), 3);
-            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Trick or ...'", "Treat");
+            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the ghost's favorite food?", List.of("Pizza", "Brains", "Spaghetti", "Salad"), 1, "");
+            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What instrument does a skeleton play?", List.of("Guitar", "Flute", "Xylophone", "Trombone"), 3, "");
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Trick or ...'", "Treat", "");
 
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);

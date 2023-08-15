@@ -38,9 +38,8 @@ public class MCQPuzzleStrategy implements PuzzleStrategy {
     }
 
     @Override
-    public void showHint() {
-        System.out.println("Sure! Here is your hint: ");
-        System.out.println(this.getHint());
+    public String showHint() {
+        return hint;
     }
 
     @Override
