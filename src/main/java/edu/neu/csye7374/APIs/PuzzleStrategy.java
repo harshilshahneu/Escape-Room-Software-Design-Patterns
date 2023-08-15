@@ -4,5 +4,5 @@ public interface PuzzleStrategy {
     boolean solve(String answer);
     public void display();
 
-    public void showHint();
+    public String showHint();
 }
