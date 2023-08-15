@@ -8,11 +8,13 @@ public class MCQPuzzleStrategy implements PuzzleStrategy {
     String question;
     List<String> options;
     int correctOption;
+    String hint;
 
-    public MCQPuzzleStrategy(String question, List<String> options, int correctOption) {
+    public MCQPuzzleStrategy(String question, List<String> options, int correctOption, String hint) {
         this.question = question;
         this.options = options;
         this.correctOption = correctOption;
+        this.hint= hint;
     }
     @Override
     public boolean solve(String answer) {
@@ -24,6 +26,21 @@ public class MCQPuzzleStrategy implements PuzzleStrategy {
             System.out.println("Please enter a valid option number!");
             return false;
         }
+    }
+
+
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
+    @Override
+    public void showHint() {
+        System.out.println("Sure! Here is your hint: ");
+        System.out.println(this.getHint());
     }
 
     @Override

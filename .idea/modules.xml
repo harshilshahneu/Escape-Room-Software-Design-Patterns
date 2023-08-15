@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Escape-Room-Software-Design-Patterns.iml" filepath="$PROJECT_DIR$/.idea/Escape-Room-Software-Design-Patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/target/target.iml" filepath="$PROJECT_DIR$/target/target.iml" />
     </modules>
   </component>
 </project>

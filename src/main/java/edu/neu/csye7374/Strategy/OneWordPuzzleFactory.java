@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OneWordPuzzleFactory {
 
-    public PuzzleStrategy createPuzzle(String question, String answer);
+    public PuzzleStrategy createPuzzle(String question, String answer,String hint);
 }

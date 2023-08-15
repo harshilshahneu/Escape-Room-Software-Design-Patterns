@@ -26,8 +26,8 @@ public class OneWordPuzzleStrategyLazySingletonFactory implements  OneWordPuzzle
     }
 
     @Override
-    public PuzzleStrategy createPuzzle(String question, String answer) {
-        return new OneWordPuzzleStrategy(question, answer);
+    public PuzzleStrategy createPuzzle(String question, String answer,String hint) {
+        return new OneWordPuzzleStrategy(question, answer, hint);
     }
 
 }

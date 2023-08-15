@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface MCQPuzzleFactory {
 
-public PuzzleStrategy createPuzzle(String question, List<String> options, int correctOption);
+public PuzzleStrategy createPuzzle(String question, List<String> options, int correctOption,String hint);
 }

@@ -18,7 +18,7 @@ public class MCQPuzzleStrategyEagerSingletonFactory implements MCQPuzzleFactory{
     }
 
     @Override
-    public PuzzleStrategy createPuzzle(String question, List<String> options, int correctOption) {
-        return new MCQPuzzleStrategy(question, options, correctOption);
+    public PuzzleStrategy createPuzzle(String question, List<String> options, int correctOption,String hint) {
+        return new MCQPuzzleStrategy(question, options, correctOption, hint);
     }
 }
