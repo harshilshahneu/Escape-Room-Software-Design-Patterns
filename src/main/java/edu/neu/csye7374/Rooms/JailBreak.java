@@ -2,14 +2,7 @@ package edu.neu.csye7374.Rooms;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import edu.neu.csye7374.APIs.HintCommandAPI;
-import edu.neu.csye7374.APIs.HintInvokerAPI;
-import edu.neu.csye7374.APIs.HintReceiverAPI;
 import edu.neu.csye7374.APIs.PuzzleStrategy;
-import edu.neu.csye7374.HintCommand.PuzzleHintCommand;
-import edu.neu.csye7374.HintCommand.PuzzleInvoker;
-import edu.neu.csye7374.HintCommand.PuzzleReceiver;
 import edu.neu.csye7374.Models.Room;
 import edu.neu.csye7374.Strategy.MCQPuzzleStrategy;
 import edu.neu.csye7374.Strategy.OneWordPuzzleStrategy;
@@ -52,13 +45,6 @@ public class JailBreak extends Room {
             puzzleList.add(firstPuzzle);
             puzzleList.add(secondPuzzle);
             puzzleList.add(finalPuzzle);
-
-            // Command Pattern
-            // HintReceiverAPI hintReceiver = new PuzzleReceiver();
-            // HintCommandAPI hintCommand = new PuzzleHintCommand(hintReceiver, firstQuestion);
-
-            // HintInvokerAPI hintInvoker = new PuzzleInvoker(hintCommand);
-            // hintInvoker.invoke();
 
             this.setId(1)
                     .setName("JailBreak")

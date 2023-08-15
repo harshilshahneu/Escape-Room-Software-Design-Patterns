@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.neu.csye7374.APIs.HintCommandAPI;
+import edu.neu.csye7374.APIs.HintInvokerAPI;
+import edu.neu.csye7374.APIs.HintReceiverAPI;
+import edu.neu.csye7374.HintCommand.PuzzleHintCommand;
+import edu.neu.csye7374.HintCommand.PuzzleInvoker;
+import edu.neu.csye7374.HintCommand.PuzzleReceiver;
 import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
 /**
@@ -148,6 +154,16 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         } else {
             System.out.println("Wrong answer! Try again.");
             System.out.println("===========================================");
+            //ask the user if they want a hint
+            System.out.println("Do you want a hint? (y/n)");
+            String choice = System.console().readLine();
+            if (choice.equals("y")) {
+                // Command Pattern
+                HintReceiverAPI hintReceiver = new PuzzleReceiver();
+                HintCommandAPI hintCommand = new PuzzleHintCommand(hintReceiver, puzzle);
+                HintInvokerAPI hintInvoker = new PuzzleInvoker(hintCommand);
+                hintInvoker.invoke();
+            }
         }
     }
     

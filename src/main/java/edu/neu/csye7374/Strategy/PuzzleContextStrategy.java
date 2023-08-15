@@ -19,6 +19,10 @@ public boolean solve(String answer){
     return puzzleStrategy.solve(answer);
 }
 
+public void showHint(){
+    System.out.println(puzzleStrategy.showHint());
+}
+
 public PuzzleStrategy getPuzzleStrategy() {
         return puzzleStrategy;
     }
