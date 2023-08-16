@@ -54,7 +54,7 @@ public abstract class Theme {
     }
 
     public void exitTheme() {
-        System.out.println("Exiting " + themeName + " theme");
+        System.out.println("Congratulations! You've solved the room, Exiting " + themeName + " theme");
         System.exit(0);
     }
     
