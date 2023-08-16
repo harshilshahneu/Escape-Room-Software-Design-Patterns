@@ -35,6 +35,11 @@ public abstract class Theme {
     public void setThemeName(String themeName) {
         this.themeName = themeName;
     }
+
+    public String getThemeName() {
+        return this.themeName;
+    }
+
     public abstract void createTheme();
 
     public abstract void loadRooms();
@@ -77,7 +82,7 @@ public abstract class Theme {
             //display the state
             user.displayState();
             Room room = rooms.remove(0);
-            room.enterRoom(user.getUserProfile());
+            room.enterRoom(user.getUserProfile(), getThemeName()); // Passing the choosen theme to implement bridge pattern
         }
         user.setState(queue.remove());
         user.displayState();

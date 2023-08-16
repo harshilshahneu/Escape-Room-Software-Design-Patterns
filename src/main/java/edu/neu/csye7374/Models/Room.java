@@ -30,6 +30,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
     private String description; // description of the room
     private List<PuzzleContextStrategy> puzzles; // puzzles in the room
     private PuzzleContextStrategy exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
+    private String ThemeName; // Theme selected by the user in the Entry State 
 
     public Room(RoomBuilder builder) {
         this.id = builder.id;
@@ -37,6 +38,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         this.description = builder.description;
         this.puzzles = builder.puzzles;
         this.exitPuzzle = builder.exitPuzzle;
+        this.ThemeName = builder.themeName;
     }
     /**
      * Getters
@@ -75,9 +77,11 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
     /**
      * Get the user aquainted with the room
      */
-    public void enterRoom(UserProfile user) {
+    public void enterRoom(UserProfile user, String themeName) {
+        this.ThemeName = themeName;
         System.out.println("Welcome :" + user);
         System.out.println("Looks like you have entered the " + this.getName() + "!");
+        System.out.println("The choosen theme of the room is " + this.ThemeName + " Theme!");
         System.out.println("About this room: " + this.getDescription());
         System.out.println("Now, you'll be displayed a list of puzzles.");
         System.out.println("You can solve them in any order, but you don't need to solve all of them to escape the room.");
@@ -178,6 +182,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         String description;
         List<PuzzleContextStrategy> puzzles;
         PuzzleContextStrategy exitPuzzle = null; //default value
+        String themeName = "";
 
         public RoomBuilder setId(int id) {
             this.id = id;
@@ -201,6 +206,11 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
         public RoomBuilder setExitPuzzle(PuzzleContextStrategy puzzle) {
             this.exitPuzzle = puzzle;
+            return this;
+        }
+
+        public RoomBuilder setThemeName(String themeName) {
+            this.themeName = themeName;
             return this;
         }
 
