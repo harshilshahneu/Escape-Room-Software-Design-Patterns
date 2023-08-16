@@ -4,7 +4,7 @@ package edu.neu.csye7374.Models;
  * Base class to represent a Player's profile
  * Implemented Builder design pattern to build the Player's profile
  */
-public class UserProfile {
+public class UserProfile implements Cloneable{
     int id;
     String userName;
     String email;
@@ -20,6 +20,14 @@ public class UserProfile {
         return "ID='" + this.id + '\'' +
                 ", UserName='" + this.userName + '\'' +
                 ", Email='" + this.email + '\'';
+    }
+
+    public UserProfile clone() {
+        try {
+            return (UserProfile) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static class UserProfileBuilder {
