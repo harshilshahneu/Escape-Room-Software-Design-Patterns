@@ -168,20 +168,14 @@ public abstract class Room {
             }
         }
 
-        else if (answer == "") {
+        else if (answer != "") {
 
             System.out.println("Wrong answer! Try again.");
             System.out.println("===========================================");
-            // ask the user if they want a hint
-            System.out.println("Do you want a hint? (y/n)");
-            String choice = System.console().readLine();
-            if (choice.equals("y")) {
-                // Command Pattern
-                HintReceiverAPI hintReceiver = new PuzzleReceiver();
-                HintCommandAPI hintCommand = new PuzzleHintCommand(hintReceiver, puzzle);
-                HintInvokerAPI hintInvoker = new PuzzleInvoker(hintCommand);
-                hintInvoker.invoke();
-            }
+            HintReceiverAPI hintReceiver = new PuzzleReceiver();
+            HintCommandAPI hintCommand = new PuzzleHintCommand(hintReceiver, puzzle);
+            HintInvokerAPI hintInvoker = new PuzzleInvoker(hintCommand);
+            hintInvoker.invoke();
         }
     }
 

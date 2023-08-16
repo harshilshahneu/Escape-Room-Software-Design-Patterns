@@ -14,9 +14,13 @@ public class PuzzleReceiver implements HintReceiverAPI {
 
     @Override
     public void generateHint(PuzzleContextStrategy strategy) {
-       System.out.println("Sure!");
-       System.out.println("Here is your hint for the given question:"); 
-       this.obj.buildHint(strategy);
+        System.out.println("Do you want a hint? (y/n)");
+        String choice = System.console().readLine();
+
+        if (choice.equals("y")) {
+            System.out.print("Hint: ");
+            this.obj.buildHint(strategy);
+        }
     }
     
 }
