@@ -10,6 +10,7 @@ import edu.neu.csye7374.APIs.HintReceiverAPI;
 import edu.neu.csye7374.HintCommand.PuzzleHintCommand;
 import edu.neu.csye7374.HintCommand.PuzzleInvoker;
 import edu.neu.csye7374.HintCommand.PuzzleReceiver;
+import edu.neu.csye7374.PuzzleDecorator.TimedPuzzleDecorator;
 import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
 /**
@@ -20,17 +21,19 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
  * Abstract class to represent a room
  */
 
- /**
-  * Code Implementattion Reference: https://dev.to/karthikrg/implementing-builder-pattern-abstract-class-3c1l
-  */
+/**
+ * Code Implementattion Reference:
+ * https://dev.to/karthikrg/implementing-builder-pattern-abstract-class-3c1l
+ */
 
- public abstract class Room {
+public abstract class Room {
     private int id;
     private String name; // name of the room
     private String description; // description of the room
     private List<PuzzleContextStrategy> puzzles; // puzzles in the room
-    private PuzzleContextStrategy exitPuzzle; // id of the puzzle that will lead to the next room // null if no next room
-    private String ThemeName; // Theme selected by the user in the Entry State 
+    private PuzzleContextStrategy exitPuzzle; // id of the puzzle that will lead to the next room // null if no next
+                                              // room
+    private String ThemeName; // Theme selected by the user in the Entry State
 
     public Room(RoomBuilder builder) {
         this.id = builder.id;
@@ -40,6 +43,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         this.exitPuzzle = builder.exitPuzzle;
         this.ThemeName = builder.themeName;
     }
+
     /**
      * Getters
      */
@@ -51,7 +55,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         return name;
     }
 
-    public String getDescription() { 
+    public String getDescription() {
         return description;
     }
 
@@ -67,13 +71,14 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         return puzzles.remove(index);
     }
 
-    public void displayPuzzles(Map <Integer, PuzzleContextStrategy> puzzlesMap) {
+    public void displayPuzzles(Map<Integer, PuzzleContextStrategy> puzzlesMap) {
         for (Map.Entry<Integer, PuzzleContextStrategy> entry : puzzlesMap.entrySet()) {
             System.out.print("Puzzle " + entry.getKey() + ". ");
             entry.getValue().display();
             System.out.println();
         }
     }
+
     /**
      * Get the user aquainted with the room
      */
@@ -84,44 +89,44 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         System.out.println("The choosen theme of the room is " + this.ThemeName + " Theme!");
         System.out.println("About this room: " + this.getDescription());
         System.out.println("Now, you'll be displayed a list of puzzles.");
-        System.out.println("You can solve them in any order, but you don't need to solve all of them to escape the room.");
+        System.out.println(
+                "You can solve them in any order, but you don't need to solve all of them to escape the room.");
         System.out.println("Press 1 to start solving the puzzles.");
         int choice = 0;
 
-        //Start the timer once the user confirms the instructions
+        // Start the timer once the user confirms the instructions
         do {
             try {
                 choice = Integer.parseInt(System.console().readLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a number.");
             }
-            //Call playRoom() method
+            // Call playRoom() method
         } while (choice != 1);
-
 
         playRoom();
     }
 
     public void playRoom() {
         Map<Integer, PuzzleContextStrategy> puzzlesMap = createPuzzlesMap();
-    
+
         while (!puzzlesMap.isEmpty()) {
             System.out.println("===========================================");
             System.out.println("Puzzles remaining in this room: " + puzzlesMap.size());
             displayPuzzles(puzzlesMap);
             System.out.println("===========================================");
             int puzzleNumber = readPuzzleNumber();
-    
+
             if (puzzlesMap.containsKey(puzzleNumber)) {
                 solvePuzzle(puzzleNumber, puzzlesMap);
             } else {
                 System.out.println("Invalid puzzle number. Please try again.");
             }
         }
-    
+
         exitRoom();
     }
-    
+
     private Map<Integer, PuzzleContextStrategy> createPuzzlesMap() {
         Map<Integer, PuzzleContextStrategy> puzzlesMap = new HashMap<>();
         for (int i = 0; i < puzzles.size(); i++) {
@@ -129,7 +134,7 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         }
         return puzzlesMap;
     }
-    
+
     private int readPuzzleNumber() {
         System.out.println("Enter the puzzle number you want to solve: ");
         int puzzleNumber = 0;
@@ -140,25 +145,34 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
         }
         return puzzleNumber;
     }
-    
+
     private void solvePuzzle(int puzzleNumber, Map<Integer, PuzzleContextStrategy> puzzlesMap) {
+
+        PuzzleContextStrategy puzzle = puzzlesMap.get(puzzleNumber);
+        if (puzzle.getPuzzleStrategy() instanceof TimedPuzzleDecorator) {
+            System.out.println("This puzzle will be timed one. Buck up!!");
+            TimedPuzzleDecorator t = (TimedPuzzleDecorator) puzzle.getPuzzleStrategy();
+            t.startTimer();
+        }
         System.out.println("Enter your answer for puzzle number " + puzzleNumber + ": ");
         String answer = System.console().readLine();
-    
-        PuzzleContextStrategy puzzle = puzzlesMap.get(puzzleNumber);
+
         if (puzzle.solve(answer)) {
             System.out.println("Correct answer!");
             System.out.println("===========================================");
             puzzlesMap.remove(puzzleNumber);
-    
+
             if (puzzle == exitPuzzle) {
-                //the room has been solved
+                // the room has been solved
                 puzzlesMap.clear();
             }
-        } else {
+        }
+
+        else if (answer == "") {
+
             System.out.println("Wrong answer! Try again.");
             System.out.println("===========================================");
-            //ask the user if they want a hint
+            // ask the user if they want a hint
             System.out.println("Do you want a hint? (y/n)");
             String choice = System.console().readLine();
             if (choice.equals("y")) {
@@ -170,18 +184,19 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
             }
         }
     }
-    
+
     abstract public void exitRoom();
 
     /**
-     * Since room requires too many parameters, we are using builder pattern to create a room
+     * Since room requires too many parameters, we are using builder pattern to
+     * create a room
      */
     public abstract static class RoomBuilder {
         int id;
         String name;
         String description;
         List<PuzzleContextStrategy> puzzles;
-        PuzzleContextStrategy exitPuzzle = null; //default value
+        PuzzleContextStrategy exitPuzzle = null; // default value
         String themeName = "";
 
         public RoomBuilder setId(int id) {
@@ -216,6 +231,5 @@ import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
 
         public abstract Room build();
     }
-   
 
- }
+}

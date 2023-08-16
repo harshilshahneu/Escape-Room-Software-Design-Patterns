@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.neu.csye7374.APIs.PuzzleStrategy;
 import edu.neu.csye7374.Models.Room;
+import edu.neu.csye7374.PuzzleDecorator.TimedPuzzleDecorator;
 import edu.neu.csye7374.Strategy.MCQPuzzleStrategy;
 import edu.neu.csye7374.Strategy.OneWordPuzzleStrategy;
 import edu.neu.csye7374.Strategy.PuzzleContextStrategy;
@@ -36,10 +37,11 @@ public class JailBreak extends Room {
                     List.of("Hello", "World", "Hi", "Hey"), 2, "Print shows data on the console");
             PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("System.out.println(first + ' ' +second)",
                     "Hello World", "String concatenation combines two words ");
+            PuzzleStrategy timedMCQPuzzle = new TimedPuzzleDecorator(finalQuestion, 30);        
 
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);
-            PuzzleContextStrategy finalPuzzle = new PuzzleContextStrategy(finalQuestion);
+            PuzzleContextStrategy finalPuzzle = new PuzzleContextStrategy(timedMCQPuzzle);
 
             List<PuzzleContextStrategy> puzzleList = new ArrayList<>();
             puzzleList.add(firstPuzzle);
