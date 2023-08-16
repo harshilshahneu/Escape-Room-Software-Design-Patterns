@@ -27,10 +27,25 @@ public class UnderwaterAdventure extends Room {
             /**
              * Set the puzzles and exit puzzle here
              */
-            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the largest mammal in the ocean?", List.of("Dolphin", "Whale", "Shark", "Seal"), 2, "");
-            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What is a group of fish called?", List.of("Flock", "Herd", "School", "Pack"), 3, "");
-            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Fish out of ...'", "Water", "");
-
+            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy(
+                "What is the time complexity of the QuickSort algorithm?",
+                List.of("O(1)", "O(n)", "O(log n)", "O(n log n)"),
+                3,
+                "The QuickSort algorithm has an average and best-case time complexity of O(n log n)."
+            );
+    
+            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy(
+                "Which data structure uses First-In-First-Out (FIFO) ordering?",
+                List.of("Stack", "Queue", "Tree", "Set"),
+                1,
+                "A Queue is a data structure that follows First-In-First-Out (FIFO) ordering of elements."
+            );
+    
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy(
+                "What design principle suggests that a class should have only one reason to change?",
+                "Single Responsibility",
+                "The Single Responsibility Principle (SRP) suggests that a class should have only one reason to change, meaning it should have only one responsibility."
+            );
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);
             PuzzleContextStrategy finalPuzzle = new PuzzleContextStrategy(finalQuestion);

@@ -27,10 +27,25 @@ public class HauntedMansion extends Room {
             /**
              * Set the puzzles and exit puzzle here
              */
-            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy("What is the ghost's favorite food?", List.of("Pizza", "Brains", "Spaghetti", "Salad"), 1, "");
-            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy("What instrument does a skeleton play?", List.of("Guitar", "Flute", "Xylophone", "Trombone"), 3, "");
-            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy("Complete the phrase: 'Trick or ...'", "Treat", "");
-
+            PuzzleStrategy firstQuestion = new MCQPuzzleStrategy(
+                "What does the following code snippet do?",
+                List.of("Sorts an array in ascending order", "Calculates the average of an array", "Finds the maximum element in an array", "Counts the number of odd elements in an array"),
+                0,
+                "The code snippet uses a sorting algorithm to arrange the elements of an array in ascending order."
+            );
+    
+            PuzzleStrategy secondQuestion = new MCQPuzzleStrategy(
+                "What is the time complexity of a binary search algorithm?",
+                List.of("O(1)", "O(n)", "O(log n)", "O(n log n)"),
+                2,
+                "The binary search algorithm has a time complexity of O(log n) in the average and worst cases."
+            );
+    
+            PuzzleStrategy finalQuestion = new OneWordPuzzleStrategy(
+                "Which design pattern promotes the creation of objects without specifying their exact class",
+                "Factory",
+                "The Factory design pattern allows the creation of objects through a common interface without specifying their concrete class."
+            );
             PuzzleContextStrategy firstPuzzle = new PuzzleContextStrategy(firstQuestion);
             PuzzleContextStrategy secondPuzzle = new PuzzleContextStrategy(secondQuestion);
             PuzzleContextStrategy finalPuzzle = new PuzzleContextStrategy(finalQuestion);
