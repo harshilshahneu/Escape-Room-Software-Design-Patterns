@@ -19,7 +19,8 @@ public class User implements PlayerStateAPI{
     private PlayerStateAPI state;
 
     public User(UserProfile userProfile) {
-        this.userProfile = userProfile;
+        //clone the user profile
+        this.userProfile = userProfile.clone();
         this.entryState = new EntryState(this);
         this.beginnerState = new BeginnerState(this);
         this.intermediateState = new IntermediateState(this);
