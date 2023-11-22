@@ -6,4 +6,4 @@ To start, you will select a theme for your game. Each theme has its own unique s
 
 The goal of the game is to escape from the room within a time limit. To do this, you will need to find clues and solve puzzles. 
 
-There are three rooms in total. Each room is more challenging than the last. If you are able to escape from all three rooms within the time limit, you will win the game!
+There are three rooms in total. Each room is more challenging than the last. If you are able to escape from all three rooms within the time limit, you will win the game! test
